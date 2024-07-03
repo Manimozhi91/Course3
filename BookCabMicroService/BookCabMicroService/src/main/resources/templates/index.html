@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cab Booking Service</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container bg-dark mt-4">
+    <h2 class="text-light text-center">BOOK CAB</h2>
+    <div class="card">
+        <div class="card-body text-center">
+            <form th:action="@{/bookCab}" method="post">
+                <h2>BOOKING CAB</h2>
+                <label for="cname">Name</label>
+                <input type="text" id="cname" name="cname" class="form-control"/><br/>
+
+                <label for="tolocation">Source</label>
+                <select id="tolocation" name="tolocation" class="form-control">
+                    <option th:each="source : ${sources}" th:value="${source}" th:text="${source}">Valacherry</option>
+                </select><br/>
+
+                <label for="fromlocation">Destination</label>
+                <select id="fromlocation" name="fromlocation" class="form-control">
+                    <option th:each="destination : ${destinations}" th:value="${destination}" th:text="${destination}">Annanager</option>
+                </select><br/>
+
+                <label for="typeofcab">Type Of Cab</label>
+                <select id="typeofcab" name="typeofcab" class="form-control">
+                    <option th:each="cabType : ${cabTypes}" th:value="${cabType}" th:text="${cabType}">Innova</option>
+                </select><br/>
+
+                <input type="submit" class="btn btn-primary" value="Book Cab"/>
+                <input type="reset" class="btn btn-primary" value="Reset"/>
+                <a th:href="@{/}" class="btn btn-primary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
